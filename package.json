@@ -1,0 +1,29 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Tazwin's Portfolio Website",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tazwinator/portfolio-website.git"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "portfolio-website"
+  ],
+  "author": "Tazwin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tazwinator/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/Tazwinator/portfolio-website#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
+    "express": "^4.17.1"
+  }
+}
