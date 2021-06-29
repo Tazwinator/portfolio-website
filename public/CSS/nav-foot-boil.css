@@ -1,0 +1,63 @@
+/* Main things like the body */
+body {
+	background-color: white;
+	background-attachment: local;
+	/* font-family: 'Caveat', cursive; ------- The handwriting esque font */
+	font-family: 'Orbitron', sans-serif;
+	font-size: 20px;
+}
+
+/* Navbar and button for it */
+.side-navbar {
+	width: 180px;
+	height: 100%;
+	position: fixed;
+	margin-left: -300px;
+	background-color: rgb(54, 54, 54);
+	transition: 0.5s;
+	border-radius: .25rem;
+	opacity: 0.6;
+	text-align: center;
+	font-size: 18px;
+}
+
+.noBlue {
+	color: inherit; /* blue colors for links too */
+	text-decoration: inherit; /* no underline */
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+	background-color: #ffffff26;
+}
+
+.active-nav {
+	margin-left: 15px;
+}
+
+/* Button */
+
+.my-container {
+	transition: 0.6s;
+	margin: 5px 0 0 5px;
+	background-color: rgb(54, 54, 54);
+	float: left;
+	position: fixed;
+	opacity: 0.6;
+	border-radius: .25rem;
+}
+
+.active-cont {
+	margin-left: 200px;
+}
+
+#menu-btn {
+	background-color: rgb(54, 54, 54);
+	color: #fff;
+}
+
+#menu-btn:focus {
+	box-shadow: none;
+	outline: none;
+}

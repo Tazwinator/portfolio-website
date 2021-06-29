@@ -1,0 +1,122 @@
+#crusader {
+	background-image: url("/images/crusader.png");
+	min-height: 22.5vh;
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+/* #pc {
+	width: 300px;
+	height: 400px;
+} */
+
+#stars {
+	background-color: white;
+	padding-bottom: 10px;
+}
+
+/* Just @media below */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 400px) {
+	#crusader {
+		min-height: 25vh;
+	}
+}
+
+@media only screen and (min-width: 450px) {
+	#crusader {
+		min-height: 27.5vh;
+	}
+}
+
+@media only screen and (min-width: 500px) {
+	#crusader {
+		min-height: 30vh;
+	}
+}
+
+@media only screen and (min-width: 550px) {
+	#crusader {
+		min-height: 32.5vh;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	#crusader {
+		min-height: 35vh;
+	}
+}
+
+@media only screen and (min-width: 650px) {
+	#crusader {
+		min-height: 37.5vh;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	#crusader {
+		min-height: 40vh;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 750px) {
+	#crusader {
+		min-height: 45vh;
+	}
+}
+
+@media only screen and (min-width: 850px) {
+	#crusader {
+		min-height: 50vh;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 950px) {
+	#crusader {
+		min-height: 55vh;
+	}
+}
+
+@media only screen and (min-width: 1050px) {
+	#crusader {
+		min-height: 60vh;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	#crusader {
+		min-height: 67.5vh;
+	}
+}
+
+@media only screen and (min-width: 1350px) {
+	#crusader {
+		min-height: 80vh;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	#crusader {
+		min-height: 90vh;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#crusader {
+		min-height: 95vh;
+	}
+}
+
+@media only screen and (min-width: 1900px) {
+	#crusader {
+		min-height: 100vh;
+	}
+}
