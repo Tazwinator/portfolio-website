@@ -1,3 +1,113 @@
 <% layout("/boilerplate") %>
 
-<h1>Auth</h1>
+
+<div class="container vh-100">
+  <div class="row pt-4 mb-4">
+
+
+<h1 class="text-center"><u>Authentication and Authorization</u></h1>
+
+<% if(currentUser) { %>
+  <div class="col-10 offset-1">
+    <h3>You're now logged in, so the forms have been taken away.</h3>
+    <p>If you just registered and you can now see this. It is because I have made it so that in the request 
+      controller you are logged in at the same time.</p>
+      <p>If you want to logout and/or see them forms again click the button below:</p>
+      <form class="text-center" action="/logout" method="get">
+      <button class="btn btn-danger">Logout</button>
+      </form>
+  </div>
+
+<% } else {%>
+      <div class="col-md-6 col-xl-4 offset-xl-2">
+          <div class="card shadow">
+              <img src="/images/stars.jpeg"
+                  alt="" class="card-img-top" />
+              <div class="card-body">
+                  <h5 class="card-title">Login</h5>
+                  <form action="/login" method="POST" class="needs-validation" novalidate>
+                      <div class="mb-3">
+                          <label class="form-label" for="username">Username</label>
+                          <input class="form-control" type="text" id="username" name="username" autofocus required>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a valid username.
+                          </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label class="form-label" for="password">Password</label>
+                          <input class="form-control" type="text" id="password" name="password" required>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a valid password.
+                          </div>
+                      </div>
+                      <button class="btn btn-success btn-block">Login</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+ 
+
+    <div class="col-md-6 col-xl-4">
+        <div class="card shadow">
+            <img src="/images/stars.jpeg"
+                alt="" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Register</h5>
+                <form action="/register" method="POST" class="needs-validation" novalidate>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="email">Email:</label>
+                    <input class="form-control" type="email" id="email" name="email" autofocus required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                      Please provide a valid email.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label class="form-label" for="username">Username:</label>
+                    <input class="form-control" type="text" id="username" name="username" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                      Please provide a valid username.
+                    </div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label class="form-label" for="password">Password:</label>
+                    <input class="form-control" type="text" id="password" name="password" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                      Please provide a valid password.
+                    </div>
+                  </div>
+                
+                  <button class="btn btn-success btn-block">Register</button>
+                
+                </form>
+            </div>
+        </div>
+      </div>
+ 
+
+
+<% } %> 
+
+  </div>
+</div>
+
+
+<script src="/JS/validateForms.js"></script>

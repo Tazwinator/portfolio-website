@@ -1,0 +1,8 @@
+body {
+	background-image: url("/images/stars.jpeg");
+	color: white;
+}
+
+.star {
+	background-color: black;
+}
