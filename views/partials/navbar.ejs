@@ -1,18 +1,43 @@
-<div class="side-navbar d-flex justify-content-between flex-wrap flex-column" id="sidebar">
-  <div class="nav flex-column text-white w-100">
-    <p class="h3 text-white my-2 p-1">
+<div class="side-navbar d-flex flex-column justify-content-between flex-wrap" id="sidebar">
+
+  <div class="nav d-flex flex-column text-white w-100">
+    <h3 class="p-2">
       Things I can do
-    </p>
-    <a href="/" class="nav-link noBlue">
-      <span class="mx-2">Homepage</span>
+    </h3>
+    <div class="border-bottom border-2"></div>
+    <a href="/" class="nav-link noBlue mt-3">
+      <span class="">Homepage</span>
     </a>
+    <hr>
     <a href="/auth" class="nav-link noBlue">
-      <span class="mx-2">Authentication and Authorization</span>
+      <span class="">Authentication and Authorization</span>
     </a>
+    <hr>
+    <a href="/data" class="nav-link noBlue">
+      <span class="">Data Upload</span>
+    </a>
+    <hr>
+    <a href="/api" class="nav-link noBlue">
+      <span class="">External API Usage</span>
+    </a>
+    <hr>
     <a href="/tech" class="nav-link noBlue">
-      <span class="mx-2">My Tech Stack</span>
+      <span class="">My Tech Stack</span>
     </a>
   </div>
+
+  <div class="py-3">
+    <% if (currentUser) { %> 
+    <form action="/logout" method="get">
+      <button class="btn btn-danger">Logout</button>
+    </form>
+    <% } else {%> 
+    <form action="/auth" method="get">
+      <button class="btn btn-success">Login or Register</button>
+    </form>
+    <% } %> 
+  </div>
+
 </div>
 
 

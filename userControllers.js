@@ -19,11 +19,15 @@ module.exports.registerSubmit = async (req, res) => {
 
 module.exports.loginSubmit = (req, res) => {
   req.flash("success", "Logged in, welcome!"); // Passed in to the next request
-  res.redirect("/auth");
+  const redirectUrl = req.session.returnTo || "/auth";
+  delete req.session.returnTo; 
+  res.redirect(redirectUrl);
 };
 
 module.exports.logout = (req, res) => {
   req.logout();
   req.flash("success", "Logged out, goodbye!");
-  res.redirect("/auth")
+  const redirectUrl = req.session.returnTo || "/auth";
+  delete req.session.returnTo; 
+  res.redirect(redirectUrl);
 };

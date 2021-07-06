@@ -25,16 +25,14 @@ app.use(express.urlencoded({extended: true}));
 // --------- Mongo --------------------------- //
 
 const Mongoose = require("mongoose");
-// Connects to the specified db on the mongo server via mongoose.
-// If the db is not found it creates one.
 
 const dbUrl = process.env.DB_URL
 
 Mongoose.connect(dbUrl, {
   useNewUrlParser: true,
-  useCreateIndex: true, // These parameters should always be used unless I found out more about them.
+  useCreateIndex: true, 
   useUnifiedTopology: true,
-  useFindAndModify: false // This one fixes a deprication eroor with finbByIdAndDelete
+  useFindAndModify: false // This one fixes a deprication error with findByIdAndDelete
 });
 
 const db = Mongoose.connection;
@@ -53,7 +51,7 @@ const secret = process.env.SECRET || "thishouldbeabettersecret!";
 const store = new MongoDBStore ({
   mongoUrl: dbUrl,
   secret: secret,
-  touchAfter: 24 * 60 * 60 // In seconds, delay between session saves to the db when nothing has been updated
+  touchAfter: 24 * 60 * 60 // In seconds.
 });
 
 store.on("error", function (e) {
@@ -73,7 +71,7 @@ const sessionConfig = { // Sets up the sessionId cookie
     maxAge: 1000 * 60 * 60 *24 * 7
   }
 };
-app.use(session(sessionConfig)); // deploys the sessionId cookie
+app.use(session(sessionConfig));
 
 
 // --------- Passport --------------------------- //
@@ -99,19 +97,19 @@ passport.deserializeUser(User.deserializeUser());
 
 const flash = require("connect-flash");
 
-app.use(flash()); // Tells express to use flash. Flash is basially a popup plugin.
+app.use(flash());
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
-  // If "success" is in the request then it will pass it through to the template (so you don't have to do it manually)
 });
 
 // --------- Other (also to play around with and test stuff) --------------------------- //
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user; // req.user is set by passport
+  req.session.returnTo = req.header("Referrer");
   next();
 });
 
@@ -135,6 +133,20 @@ app.route("/login")
   .post(passport.authenticate("local", { failureFlash: true, failureRedirect: "/auth"}), users.loginSubmit);
 
 app.get("/logout", isLoggedIn, users.logout);
+
+// Data Uplaod routes
+
+app.route("/data")
+.get((req, res) => {
+  res.render("pages/data")
+});
+
+// API routes
+
+app.route("/api")
+.get((req, res) => {
+  res.render("pages/api")
+});
 
 // Tech stack routes
 
