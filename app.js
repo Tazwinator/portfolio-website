@@ -5,12 +5,15 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 const path = require("path");
-const { catchAsyncErr, isLoggedIn } = require("./middleware");
-const users = require("./userControllers");
+const axios = require("axios");
+const { catchAsyncErr, isLoggedIn } = require("./node-files/middleware");
+const users = require("./node-files/userControllers");
 
-// Session
+// Session / Cookies
 const session = require("express-session");
 const MongoDBStore = require("connect-mongo");
+
+const cookieParser = require("cookie-parser");
 
 
 // --------- Static Files --------------------------- //
@@ -73,13 +76,42 @@ const sessionConfig = { // Sets up the sessionId cookie
 };
 app.use(session(sessionConfig));
 
+// --------- Cookies --------------------------- //
+
+app.use(cookieParser());
+
+const getGeoData = async (ip) => {
+  try {
+      const config = { headers: { accept: 'application/json' } }
+      const res = await axios.get(`https://freegeoip.app/json/${ip}`, config)
+      return res.data
+  } catch (e) {
+      console.log("GeoIp not worked", e)
+  }
+};
+
+app.use(async (req, res, next) => {
+  if (!req.cookies.GeoIp) {
+    const ip = req.socket.remoteAddress;
+    const data = await getGeoData(ip);
+    const geo = `${data.country_code}/${data.region_code}/${data.city}/${data.zip_code}/IP:${data.ip}`
+    console.log(geo);
+    res.cookie("GeoIp", geo, {
+      httpOnly: true,
+      expires: Date.now() + 1000 * 60 * 60 *24 * 7, // In Milliseconds
+      maxAge: 1000 * 60 * 60 *24 * 7 // In milliseconds
+    });
+    next();
+  }
+  next();
+});
 
 // --------- Passport --------------------------- //
 
 
 const passport = require("passport");
 const passportLocal = require("passport-local");
-const User = require("./userModel");
+const User = require("./node-files/userModel");
 
 app.use(passport.initialize()); // Sets up passport
 app.use(passport.session()); // Makes it use the express-session for persistant sessions
@@ -163,6 +195,7 @@ app.listen(3000, () => {
 
 // Plan:
 // Auth page shows me doing it
-// Tech stack page shows itself in a frontend-backend layout with api inbetween
+// Tech stack page shows itself in a frontend-backend layout
 // Data upload page shows me uploading images and form data and you have to be logged in
 // api page shows me using external api
+// Maybe do a calculator with rust and webassembly
