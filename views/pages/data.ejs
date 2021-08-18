@@ -1,1 +1,55 @@
 <% layout("/boilerplate") %> 
+
+<div class="container-xl">
+
+  <h1 class="text-center mb-4"><u>Data Upload</u></h1>
+
+<div class="row mb-4">
+
+  <h3 class="text-center mb-4"><u>Images(Cloudinary)</u></h1>
+
+
+  <div class="col-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h5 class="card-title">Upload an image:</h5>
+            <form action="/img-data" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <input class="form-control" type="file" id="image" name="image" autofocus required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                      Please provide a valid image file, it accepts jpg, jpeg and png formats.
+                    </div>
+                </div>
+                <button class="btn btn-success btn-block">Upload to cloudinary</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-7 offset-1">
+  <div class="card shadow">
+      <div class="card-body">
+          <h5 class="card-title">Images on your account:</h5>
+          <div class="container-fluid p-0">
+            <div class="row">
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+</div>
+
+<h3 class="text-center my-4"><u>Text(Mongo Atlas)</u></h1>
