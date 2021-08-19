@@ -1,4 +1,4 @@
-const User = require('../node-files/userModel');
+const User = require('../node-files/user-model');
 
 module.exports.registerSubmit = async (req, res) => {
 	try {

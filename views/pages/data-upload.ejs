@@ -1,5 +1,7 @@
 <% layout("/boilerplate") %> 
 
+<link rel="stylesheet" href="CSS/data-upload.css">
+
 <div class="container-xl">
 
   <h1 class="text-center mb-4"><u>Data Upload</u></h1>
@@ -34,15 +36,14 @@
       <div class="card-body">
           <h5 class="card-title">Images on your account:</h5>
           <div class="container-fluid p-0">
-            <div class="row">
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
-              <div class="col-4  p-0 border border-2 border-dark">aaa</div>
+            <div id="images" class="row">
+              <% for (let image of images) { %>
+                <div class="col-4 p-0 border-bottom border-end border-2 border-white">
+                  <a href="/img-data/<%= image._id %>" class="imgAnchor">
+                    <img src="<%= image.path %>" class="userImage img-fluid" alt="An image should be here">
+                  </a>
+                </div>
+              <% } %> 
             </div>
           </div>
       </div>
@@ -53,3 +54,7 @@
 </div>
 
 <h3 class="text-center my-4"><u>Text(Mongo Atlas)</u></h1>
+
+<script src="/JS/data-upload.js"></script>
+
+

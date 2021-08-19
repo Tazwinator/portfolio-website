@@ -8,6 +8,7 @@ const path = require('path');
 const axios = require('axios');
 const { catchAsyncErr, isLoggedIn } = require('./node-files/middleware');
 const users = require('./controllers/users');
+const dataUpload = require('./controllers/data-upload');
 
 // --------- Session / Cookies --------------------------- //
 const session = require('express-session');
@@ -116,7 +117,7 @@ app.use(async (req, res, next) => {
 
 const passport = require('passport');
 const passportLocal = require('passport-local');
-const User = require('./node-files/userModel');
+const User = require('./node-files/user-model');
 
 app.use(passport.initialize()); // Sets up passport
 app.use(passport.session()); // Makes it use the express-session for persistant sessions
@@ -176,13 +177,12 @@ app.get('/logout', isLoggedIn, users.logout);
 
 // Data Uplaod routes
 
-app.route('/data').get((req, res) => {
-	res.render('pages/data');
-});
+app.route('/data').get(dataUpload.dataPage);
 
-app.route('/img-data').post(upload.single('image'), (req, res) => {
-	console.dir(req.file);
-});
+app
+	.route('/img-data')
+	.post(upload.single('image'), dataUpload.newImg)
+	.delete(dataUpload.delImg);
 
 /* app.route('/txt-data').post(); */
 
