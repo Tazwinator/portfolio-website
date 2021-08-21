@@ -38,9 +38,9 @@
           <div class="container-fluid p-0">
             <div id="images" class="row">
               <% for (let image of images) { %>
-                <div class="col-4 p-0 border-bottom border-end border-2 border-white">
-                  <a href="/img-data/<%= image._id %>" class="imgAnchor">
-                    <img src="<%= image.path %>" class="userImage img-fluid" alt="An image should be here">
+                <div class="imgCol col-4 p-0">
+                  <a href="/img-data/edit-img/<%= image._id %>" class="imgAnchor">
+                    <img src="<%= image.path %>" class="userImage w-100 h-100" alt="An image should be here">
                   </a>
                 </div>
               <% } %> 
@@ -54,6 +54,19 @@
 </div>
 
 <h3 class="text-center my-4"><u>Text(Mongo Atlas)</u></h1>
+
+<div class="row">
+
+  <div class="col-4">
+
+  </div>
+
+
+  <div class="col-6 offset-2">
+
+  </div>
+
+</div>
 
 <script src="/JS/data-upload.js"></script>
 

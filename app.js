@@ -4,8 +4,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const app = express();
+const router = express.Router();
 const path = require('path');
 const axios = require('axios');
+
+const { ExpressError } = require('./node-files/middleware.js');
+
 const { catchAsyncErr, isLoggedIn } = require('./node-files/middleware');
 const users = require('./controllers/users');
 const dataUpload = require('./controllers/data-upload');
@@ -177,12 +181,16 @@ app.get('/logout', isLoggedIn, users.logout);
 
 // Data Uplaod routes
 
-app.route('/data').get(dataUpload.dataPage);
+app.route('/data').get(catchAsyncErr(dataUpload.dataPage));
 
 app
 	.route('/img-data')
-	.post(upload.single('image'), dataUpload.newImg)
-	.delete(dataUpload.delImg);
+	.post(upload.single('image'), catchAsyncErr(dataUpload.newImg));
+
+app
+	.route('/img-data/edit-img/:imgId')
+	.get(catchAsyncErr(dataUpload.editImgsPage))
+	.delete(catchAsyncErr(dataUpload.delImg));
 
 /* app.route('/txt-data').post(); */
 
@@ -198,8 +206,22 @@ app.route('/tech').get((req, res) => {
 	res.render('pages/tech');
 });
 
-app.listen(3000, () => {
-	console.log('Listening on port 3000');
+app.all('*', (req, res, next) => {
+	// .all is for all HTTP methods (so nto just if the app is used like .use)
+	next(new ExpressError('Webpage not found', 404));
+});
+
+// Handling unhandled errors and passing them onto the errors page.
+app.use((err, req, res, next) => {
+	const { statusCode = 500 } = err;
+	if (!err.message) err.message = 'Something went wrong!';
+	if (err.message === 'Something went wrong!') console.log(err);
+	res.status(statusCode).render('pages/error', { err, statusCode });
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+	console.log(`Serving on port ${port}`);
 });
 
 // Plan:

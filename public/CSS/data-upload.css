@@ -1,49 +1,21 @@
-/* Shutter Out Vertical */
-.userImage {
-	display: inline-block;
-	vertical-align: middle;
-	-webkit-transform: perspective(1px) translateZ(0);
-	transform: perspective(1px) translateZ(0);
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-	position: relative;
-	background: white;
-	-webkit-transition-property: color;
-	transition-property: color;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-}
-.userImage:before {
-	content: "";
-	position: static;
-	z-index: 2;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: white;
-	-webkit-transform: scaleY(0);
-	transform: scaleY(0);
-	-webkit-transform-origin: 50%;
-	transform-origin: 50%;
-	-webkit-transition-property: transform;
-	transition-property: transform;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-timing-function: ease-out;
-	transition-timing-function: ease-out;
-}
-.userImage:hover,
-.userImage:focus,
-.userImage:active {
+.editText {
+	position: absolute;
+	top: 50%;
+	margin-left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
 	color: white;
-}
-.userImage:hover:before,
-.userImage:focus:before,
-.userImage:active:before {
-	-webkit-transform: scaleY(1);
-	transform: scaleY(1);
+	pointer-events: none;
 }
 
-/* .editText {
+.imgAnchor {
+	position: relative;
 }
- */
+
+.imgCol {
+	border: .25rem solid white;
+}
+
+.imgCol:hover {
+	border-color: purple;
+}

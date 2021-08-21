@@ -35,6 +35,11 @@ body {
 	text-decoration: inherit; /* no underline */
 }
 
+.noBlue:hover {
+	color: inherit; /* blue colors for links too */
+	text-decoration: inherit; /* no underline */
+}
+
 .nav-link:active,
 .nav-link:focus,
 .nav-link:hover {
