@@ -7,6 +7,13 @@ const ImageSchema = new Schema({
 	filename : String
 });
 
+const textSchema = new Schema({
+	fav1 : String,
+	fav2 : String,
+	fav3 : String,
+	fav4 : String
+});
+
 ImageSchema.virtual('thumbnail').get(function () {
 	return this.url.replace('/upload', '/upload/w_200');
 });
@@ -18,9 +25,7 @@ const UserSchema = new Schema({
 		unique   : true
 	},
 	images     : [ ImageSchema ],
-	favourites : {
-		type : String
-	}
+	favourites : { textSchema }
 });
 
 UserSchema.plugin(passportLocalMongoose);

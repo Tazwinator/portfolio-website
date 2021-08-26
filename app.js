@@ -8,6 +8,9 @@ const router = express.Router();
 const path = require('path');
 const axios = require('axios');
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const { ExpressError } = require('./node-files/middleware.js');
 
 const { catchAsyncErr, isLoggedIn } = require('./node-files/middleware');
@@ -192,7 +195,7 @@ app
 	.get(catchAsyncErr(dataUpload.editImgsPage))
 	.delete(catchAsyncErr(dataUpload.delImg));
 
-/* app.route('/txt-data').post(); */
+app.route('/txt-data').post(catchAsyncErr(dataUpload.newFavs));
 
 // API routes
 
