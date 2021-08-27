@@ -58,8 +58,20 @@ module.exports.delImg = async (req, res) => {
 // For Text
 
 module.exports.newFavs = async (req, res) => {
-	console.log(req.body.favs);
-	const user = await User.findByIdAndUpdate(req.user.id, {
+	await User.findByIdAndUpdate(req.user.id, {
 		$set : { favourites: req.body.favs }
 	});
+	req.flash('success', 'Favourties added');
+	res.redirect('/data');
+};
+
+module.exports.delFavs = async (req, res, next) => {
+	const user = await User.findById(req.user.id);
+	if (user.favourites.length) {
+		await user.updateOne({ $pull: { favourites: user.favourites[0] } });
+		req.flash('success', 'Favourties deleted');
+		res.redirect('/data');
+	} else {
+		next(new ExpressError('There are no favourites on this account', 404));
+	}
 };

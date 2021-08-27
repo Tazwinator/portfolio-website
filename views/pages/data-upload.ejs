@@ -62,6 +62,54 @@
     <div class="card shadow">
       <div class="card-body">
           <h4 class="card-title mb-3"> <u>What is your favourite...</u> </h4>
+          <% if (favs.length) { %>
+            <form action="/txt-data" method="POST" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="fav1" class="form-label">animal?</label>
+                  <input class="form-control" type="text" id="fav1" name="favs[animal]" value="<%= favs[0].animal %>" required>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Please provide some text.
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label for="fav2" class="form-label">food?</label>
+                  <input class="form-control" type="text" id="fav2" name="favs[food]" value="<%= favs[0].food %>" required>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Please provide some text.
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label for="fav3" class="form-label">movie or tv show?</label>
+                  <input class="form-control" type="text" id="fav3" name="favs[movieTv]" value="<%= favs[0].movieTv %>" required>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Please provide some text.
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label for="fav4" class="form-label">hobby?</label>
+                  <input class="form-control" type="text" id="fav4" name="favs[hobby]" value="<%= favs[0].hobby %>" required>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Please provide some text.
+                  </div>
+              </div>
+              <p class="card-subtitle mb-3">To edit once uploaded. Simply just change it here and re-upload.</p>
+              <button class="btn btn-success btn-block">Re-Upload to Mongo</button>
+          </form>
+
+          <% } else {%> 
+
           <form action="/txt-data" method="POST" class="needs-validation" novalidate>
               <div class="mb-3">
                 <label for="fav1" class="form-label">animal?</label>
@@ -75,7 +123,7 @@
               </div>
               <div class="mb-3">
                 <label for="fav2" class="form-label">food?</label>
-                  <input class="form-control" type="text" id="fav2" name="favs[food]" autofocus required>
+                  <input class="form-control" type="text" id="fav2" name="favs[food]" required>
                   <div class="valid-feedback">
                       Looks good!
                   </div>
@@ -85,7 +133,7 @@
               </div>
               <div class="mb-3">
                 <label for="fav3" class="form-label">movie or tv show?</label>
-                  <input class="form-control" type="text" id="fav3" name="favs[movie-tv]" autofocus required>
+                  <input class="form-control" type="text" id="fav3" name="favs[movieTv]" required>
                   <div class="valid-feedback">
                       Looks good!
                   </div>
@@ -95,7 +143,7 @@
               </div>
               <div class="mb-3">
                 <label for="fav4" class="form-label">hobby?</label>
-                  <input class="form-control" type="text" id="fav4" name="favs[hobby]" autofocus required>
+                  <input class="form-control" type="text" id="fav4" name="favs[hobby]" required>
                   <div class="valid-feedback">
                       Looks good!
                   </div>
@@ -105,22 +153,39 @@
               </div>
               <button class="btn btn-success btn-block">Upload to Mongo</button>
           </form>
+          <% } %> 
       </div>
     </div>
-
   </div>
+
 
   <div class="col-7 offset-1">
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">Your current favourites:</h5>
         <div class="container">
-          <div class="row">
-            <div class="col"><%= favs.fav1 %> </div>
-            <div class="col"><%= favs.fav2 %> </div>
-            <div class="col"><%= favs.fav3 %> </div>
-            <div class="col"><%= favs.fav4 %> </div>
-          </div>
+          <% if (favs.length) {%> 
+            <div class="row">
+              <div class="col"><%= favs[0].animal %></div>
+              <div class="col"><%= favs[0].food %></div>
+              <div class="col"><%= favs[0].movieTv %></div>
+              <div class="col"><%= favs[0].hobby%></div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <form action="/txt-data?_method=DELETE" method="POST" class="d-inline">
+                  <button onclick="return confirm('Are you sure?')" class="btn btn-danger delete me-1">Delete</button>
+                </form>
+              </div>
+            </div>
+          <% } else { %> 
+            <div class="row">
+              <div class="col">
+                <h1 class="text-center">You have no favourties yet</h1>
+              </div>
+            </div>
+          <% } %> 
+
         </div>
       </div>
     </div>

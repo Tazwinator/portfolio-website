@@ -195,7 +195,10 @@ app
 	.get(catchAsyncErr(dataUpload.editImgsPage))
 	.delete(catchAsyncErr(dataUpload.delImg));
 
-app.route('/txt-data').post(catchAsyncErr(dataUpload.newFavs));
+app
+	.route('/txt-data')
+	.post(catchAsyncErr(dataUpload.newFavs))
+	.delete(catchAsyncErr(dataUpload.delFavs));
 
 // API routes
 

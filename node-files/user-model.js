@@ -8,10 +8,10 @@ const ImageSchema = new Schema({
 });
 
 const textSchema = new Schema({
-	fav1 : String,
-	fav2 : String,
-	fav3 : String,
-	fav4 : String
+	animal  : String,
+	food    : String,
+	movieTv : String,
+	hobby   : String
 });
 
 ImageSchema.virtual('thumbnail').get(function () {
@@ -25,7 +25,7 @@ const UserSchema = new Schema({
 		unique   : true
 	},
 	images     : [ ImageSchema ],
-	favourites : { textSchema }
+	favourites : [ textSchema ]
 });
 
 UserSchema.plugin(passportLocalMongoose);
