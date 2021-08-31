@@ -16,6 +16,7 @@ const { ExpressError } = require('./node-files/middleware.js');
 const { catchAsyncErr, isLoggedIn } = require('./node-files/middleware');
 const users = require('./controllers/users');
 const dataUpload = require('./controllers/data-upload');
+const api = require('./controllers/api');
 
 // --------- Session / Cookies --------------------------- //
 const session = require('express-session');
@@ -202,9 +203,7 @@ app
 
 // API routes
 
-app.route('/api').get((req, res) => {
-	res.render('pages/api');
-});
+app.route('/api').get(catchAsyncErr(api.api));
 
 // Tech stack routes
 
@@ -229,10 +228,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
 	console.log(`Serving on port ${port}`);
 });
-
-// Plan:
-// Auth page shows me doing it
-// Tech stack page shows itself in a frontend-backend layout
-// Data upload page shows me uploading images and form data and you have to be logged in
-// api page shows me using external api
-// Maybe do a calculator with rust and webassembly
