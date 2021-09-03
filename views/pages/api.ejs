@@ -2,34 +2,44 @@
 
 <link rel="stylesheet" href="/CSS/api.css">
 
-<div class="container vh-100 text-center">
+<div class="container-lg vh-100 text-center">
 
 
   <h1 class="text-center py-2"><u>External APIs</u></h1>
 
-  <div class="row pt-2 h-50">
-
-    <div class="col border">
+  <div class="row">
+    <div class="col">
       <h4>Click to get dad jokes!</h4>
-      <button id="jokeBtn1">Click me!</button>
-      <ul id="jokes1"></ul>
+      <button class="btn-sm btn-secondary" id="dadBtn">Click me!</button>
     </div>
-    <div class="col border">
+    <div class="col">
       <h4>Click to get geeky jokes!</h4>
-      <button id="jokeBtn2">Click me!</button>
-      <ul id="jokes2"></ul>
+      <button class="btn-sm btn-secondary" id="geekBtn">Click me!</button>
+    </div>
+  </div>
+
+  <div class="row h-25 pt-1 pb-3">
+
+    <div class="col">
+      <ul id="dadList"></ul>
+    </div>
+    <div class="col">
+      <ul id="geekList"></ul>
     </div>
 
   </div>
 
 
 
-  <div class="row">
+  <div class="row mt-3">
+    <h4>Click to get crypto prices!</h4>
+  </div>
+
+  <div class="row crypto">
 
     <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Click to get crypto prices!</div>
+      <div class="card border-0">
+        <div class="card-body p-0">
           <div class="card-subtitle d-inline-block"><button class="btn" id="btcBtn">Bitcoin</button></div>
           <div class="card-subtitle d-inline-block"><button class="btn" id="ethBtn">Ethereum</button></div>
           <div class="card-subtitle d-inline-block"><button class="btn" id="adaBtn">Cardano</button></div>
@@ -40,7 +50,7 @@
 
   </div>
 
-  <div class="row">
+  <div class="row mapRow">
     <div class="col">
            <!-- Map here -->
     

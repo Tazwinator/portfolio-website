@@ -1,0 +1,118 @@
+<% layout("/boilerplate") %> 
+
+<link rel="stylesheet" href="CSS/data-upload.css">
+
+<div class="container-xl">
+
+  <h1 class="text-center mb-4"><u>Data Upload</u></h1>
+
+<div class="row mb-4">
+
+  <h3 class="text-center mb-4"><u>Images (Cloudinary)</u></h1>
+
+
+  <div class="col-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h5 class="card-title">Upload an image:</h5>
+            <form action="/img-data" method="POST" enctype="multipart/form-data" class="needs-validation"disabled>
+                <div class="mb-3">
+                    <input class="form-control" type="file" id="image" name="image" disabled>
+                </div>
+                <button class="btn btn-success btn-block" disabled>Upload to Cloudinary & Mongo</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-7 offset-1">
+  <div class="card shadow">
+      <div class="card-body">
+          <h5 class="card-title">Images on your account:</h5>
+          <div class="container-fluid p-0">
+            <div id="images" class="row">
+
+              <div class="col">
+                <h1 class="text-center">You must be signed in to use this feature</h1>
+                <a href="/auth" class="btn btn-warning">To login page</a>
+              </div>
+
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+</div>
+
+<h3 class="text-center my-4"><u>Text(Mongo Atlas)</u></h1>
+
+<div class="row">
+  
+  <div class="col-4">
+
+    <div class="card shadow">
+      <div class="card-body">
+          <h4 class="card-title mb-3"> <u>What is your favourite...</u> </h4>
+          <form action="/txt-data" method="POST" class="needs-validation" disabled>
+
+            <div class="mb-3">
+              <label for="fav1" class="form-label">animal?</label>
+                <input class="form-control" type="text" id="fav1" name="favs[animal]"  disabled>
+            </div>
+
+            <div class="mb-3">
+              <label for="fav2" class="form-label">food?</label>
+                <input class="form-control" type="text" id="fav2" name="favs[food]"  disabled>
+            </div>
+
+            <div class="mb-3">
+              <label for="fav3" class="form-label">movie or tv show?</label>
+                <input class="form-control" type="text" id="fav3" name="favs[movieTv]" disabled>
+            </div>
+
+            <div class="mb-3">
+              <label for="fav4" class="form-label">hobby?</label>
+                <input class="form-control" type="text" id="fav4" name="favs[hobby]"  disabled>
+            </div>
+            
+            <button class="btn btn-success btn-block" disabled>Upload to Mongo</button>
+          </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-7 offset-1">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Your current favourites:</h5>
+        <div class="container">
+
+            <div class="row">
+              <div class="col">
+                <h1 class="text-center">You must be signed in to use this feature</h1>
+                <a href="/auth" class="btn btn-warning">To login page</a>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/JS/data-upload.js"></script>
+
+
+
+
+
+
+
+
+
+
+

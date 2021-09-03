@@ -13,17 +13,14 @@ const getGeoData = async (ip) => {
 	}
 };
 
-/* const geo = `${data.country_code}/${data.region_code}/${data.city}/${data.zip_code}/IP:${data.ip}`;
- */
-
-/* const geoData = await geocoder.forwardGeocode({
-  query: req.body.campground.location,
-  limit: 1
-}).send(); */
-
 module.exports.api = async (req, res) => {
-	const ip = '82.31.227.182';
+	const ip = req.socket.remoteAddress;
 	const data = await getGeoData(ip);
-	const location = { lng: data.longitude, lat: data.latitude };
-	res.render('pages/api', { location });
+	if (!data.longitude && !data.latitude) {
+		const location = { lng: -0.5, lat: 52.0 };
+		res.render('pages/api', { location });
+	} else {
+		const location = { lng: data.longitude, lat: data.latitude };
+		res.render('pages/api', { location });
+	}
 };

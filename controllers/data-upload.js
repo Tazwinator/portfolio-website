@@ -5,11 +5,15 @@ const { cloudinary } = require('../cloudinary');
 // Main Data Page GET
 
 module.exports.dataPage = async (req, res) => {
-	const user = await User.findById(req.user.id);
-	const images = user.images;
-	const favs = user.favourites.toObject();
-	// Beacuse mongoose returns a document not an object and it won't get displayed otherwise
-	res.render('pages/data-upload', { images: images, favs });
+	if (req.user) {
+		const user = await User.findById(req.user.id);
+		const images = user.images;
+		const favs = user.favourites.toObject();
+		// Beacuse mongoose returns a document not an object and it won't get displayed otherwise
+		res.render('pages/data-upload', { images: images, favs });
+	} else {
+		res.render('pages/data-upload(noUser)');
+	}
 };
 
 // For Images

@@ -1,13 +1,6 @@
 /* Dad jokes */
-const jokes1 = document.querySelector('#jokes1');
-const button1 = document.querySelector('#jokeBtn1');
-
-const addDadJoke = async () => {
-	const jokeText = await getDadJoke();
-	const newLI = document.createElement('LI');
-	newLI.append(jokeText);
-	jokes1.append(newLI);
-};
+const dadList = document.querySelector('#dadList');
+const dadBtn = document.querySelector('#dadBtn');
 
 const getDadJoke = async () => {
 	try {
@@ -19,19 +12,28 @@ const getDadJoke = async () => {
 	}
 };
 
-button1.addEventListener('click', addDadJoke);
+const addDadJoke = async () => {
+	dadBtn.disabled = true;
+	setTimeout(() => (dadBtn.disabled = false), 1100);
+	const jokeText = await getDadJoke();
+	const newLi = document.createElement('LI');
+	newLi.append(jokeText);
+	dadList.prepend(newLi);
+	if (dadList.children.length == 5) {
+		delJk = dadList.children[4];
+		delJk.classList.add('hidden');
+		setTimeout(() => {
+			delJk.remove();
+		}, 1000);
+	}
+};
+
+dadBtn.addEventListener('click', addDadJoke);
 
 /* Geeky Jokes */
 
-const jokes2 = document.querySelector('#jokes2');
-const button2 = document.querySelector('#jokeBtn2');
-
-const addGeekJoke = async () => {
-	const jokeText = await getGeekJoke();
-	const newLI = document.createElement('LI');
-	newLI.append(jokeText);
-	jokes2.append(newLI);
-};
+const geekList = document.querySelector('#geekList');
+const geekBtn = document.querySelector('#geekBtn');
 
 const getGeekJoke = async () => {
 	try {
@@ -46,7 +48,26 @@ const getGeekJoke = async () => {
 	}
 };
 
-button2.addEventListener('click', addGeekJoke);
+const addGeekJoke = async () => {
+	geekBtn.disabled = true;
+	setTimeout(() => (geekBtn.disabled = false), 1100);
+	const jokeText = await getGeekJoke();
+	const newLi = document.createElement('LI');
+	newLi.append(jokeText);
+	geekList.prepend(newLi);
+	if (geekList.children.length == 5) {
+		delJk = geekList.children[4];
+		console.log(delJk);
+		delJk.classList.add('hidden');
+		setTimeout(() => {
+			delJk.remove();
+		}, 1000);
+	}
+};
+
+geekBtn.addEventListener('click', addGeekJoke);
+
+// ---------------------------------------------------------------------
 
 /* Crypto */
 
@@ -107,14 +128,14 @@ const map = new mapboxgl.Map({
 	container : 'map', // container ID
 	style     : 'mapbox://styles/mapbox/satellite-v9', // style URL
 	center    : lngLat, // starting position [lng, lat]
-	zoom      : 9 // starting zoom
+	zoom      : 4 // starting zoom
 });
 
 new mapboxgl.Marker()
 	.setLngLat(lngLat)
 	.setPopup(
 		new mapboxgl.Popup({ offset: 25 }).setHTML(
-			`<h3>Your Home?</h3><p>Don't worry this isn't stored in a DB</p>`
+			`<h3>Your Home?</h3><p>Defaults to: lng: -0.5, lat: 52.0. Don't worry this isn't stored in the database.</p>`
 		)
 	)
 	.addTo(map);
