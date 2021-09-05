@@ -19,3 +19,7 @@
 .imgCol:hover {
 	border-color: purple;
 }
+
+.smolTxt {
+	font-size: .75rem;
+}

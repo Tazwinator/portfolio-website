@@ -1,7 +1,12 @@
 <% layout("/boilerplate") %>
 
+<link rel="stylesheet" href="/CSS/auth.css">
 
-<div class="container vh-100">
+<% if (currentUser) { %>
+  <div class="container vh-100">
+<% } else { %> 
+  <div class="container wrapper">
+<% } %>  
   <div class="row pt-5 mb-4 ">
 
 
@@ -54,7 +59,7 @@
       </div>
  
 
-    <div class="col-md-6 col-xl-4">
+    <div class="col-md-6 col-xl-4 mb-3 mobileMargin">
         <div class="card shadow">
             <img src="/images/stars.jpeg"
                 alt="" class="card-img-top" />
@@ -111,3 +116,4 @@
 
 
 <script src="/JS/validateForms.js"></script>
+<script src="/JS/auth.js"></script>

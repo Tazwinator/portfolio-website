@@ -87,7 +87,7 @@ const getBtc = async () => {
 		const coin1 = res1.data.ticker;
 		coinDetails.innerText = `${coin1.base} -> ${coin1.target} = ${coin1.price}`;
 	} catch (e) {
-		return 'NO JOKES AVAILABLE! SORRY :(';
+		coinDetails.innerText = 'NO CRYPTO PRICES AVAILABLE SORRY';
 	}
 };
 
@@ -100,7 +100,7 @@ const getEth = async () => {
 		const coin2 = res2.data.ticker;
 		coinDetails.innerText = `${coin2.base} -> ${coin2.target} = ${coin2.price}`;
 	} catch (e) {
-		return 'NO JOKES AVAILABLE! SORRY :(';
+		coinDetails.innerText = 'NO CRYPTO PRICES AVAILABLE SORRY';
 	}
 };
 
@@ -113,7 +113,7 @@ const getAda = async () => {
 		const coin3 = res3.data.ticker;
 		coinDetails.innerText = `${coin3.base} -> ${coin3.target} = ${coin3.price}`;
 	} catch (e) {
-		return 'NO JOKES AVAILABLE! SORRY :(';
+		coinDetails.innerText = 'NO CRYPTO PRICES AVAILABLE SORRY';
 	}
 };
 

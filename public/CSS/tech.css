@@ -6,3 +6,10 @@ body {
 .star {
 	background-color: black;
 }
+
+/* taylor use this on other pages if you have the footer issue. Maybe make a seperate file for it */
+@media only screen and (min-width: 575px) {
+	.wrapper {
+		height: 100vh;
+	}
+}

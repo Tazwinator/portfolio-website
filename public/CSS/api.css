@@ -4,11 +4,17 @@
 }
 
 .mapRow {
-	height: 35%;
+	height: 200px;
+	margin-bottom: 4rem;
+	margin-top: 5rem;
 }
 
 .crypto {
-	height: 15%;
+	height: 75px;
+}
+
+#coinDetails {
+	color: violet;
 }
 
 #menu {
@@ -26,4 +32,8 @@
 	visibility: hidden;
 	opacity: 0;
 	transition: visibility 0s 1s, opacity .5s linear;
+}
+
+.jokeHeight {
+	height: 300px;
 }

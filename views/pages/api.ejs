@@ -2,31 +2,21 @@
 
 <link rel="stylesheet" href="/CSS/api.css">
 
-<div class="container-lg vh-100 text-center">
+<div class="container-lg text-center">
 
-
-  <h1 class="text-center py-2"><u>External APIs</u></h1>
+  <h1 class="text-center pb-2 pt-5"><u>External APIs</u></h1>
 
   <div class="row">
-    <div class="col">
-      <h4>Click to get dad jokes!</h4>
-      <button class="btn-sm btn-secondary" id="dadBtn">Click me!</button>
-    </div>
-    <div class="col">
-      <h4>Click to get geeky jokes!</h4>
-      <button class="btn-sm btn-secondary" id="geekBtn">Click me!</button>
-    </div>
-  </div>
-
-  <div class="row h-25 pt-1 pb-3">
-
-    <div class="col">
+    <div class="col-12 col-sm jokeHeight">
+      <h4 class="mb-2">Click to get dad jokes!</h4>
+      <button class="btn-sm btn-secondary mb-2" id="dadBtn">Click me!</button>
       <ul id="dadList"></ul>
     </div>
-    <div class="col">
+    <div class="col-12 col-sm jokeHeight">
+      <h4 class="mb-2">Click to get geeky jokes!</h4>
+      <button class="btn-sm btn-secondary mb-2" id="geekBtn">Click me!</button>
       <ul id="geekList"></ul>
     </div>
-
   </div>
 
 
@@ -40,10 +30,10 @@
     <div class="col">
       <div class="card border-0">
         <div class="card-body p-0">
-          <div class="card-subtitle d-inline-block"><button class="btn" id="btcBtn">Bitcoin</button></div>
-          <div class="card-subtitle d-inline-block"><button class="btn" id="ethBtn">Ethereum</button></div>
-          <div class="card-subtitle d-inline-block"><button class="btn" id="adaBtn">Cardano</button></div>
-          <div class="card-text" id="coinDetails"></div>
+          <div class="card-subtitle d-inline-block border-bottom border-top border-2 border-dark"><button class="btn" id="btcBtn">Bitcoin</button></div>
+          <div class="card-subtitle d-inline-block border-bottom border-top border-2 border-dark"><button class="btn" id="ethBtn">Ethereum</button></div>
+          <div class="card-subtitle d-inline-block border-bottom border-top border-2 border-dark"><button class="btn" id="adaBtn">Cardano</button></div>
+          <h4 class="mt-2" id="coinDetails"></h4>
         </div>
       </div>
     </div>

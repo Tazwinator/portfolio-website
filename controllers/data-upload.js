@@ -29,6 +29,10 @@ module.exports.newImg = async (req, res) => {
 			'Success, you have successfully made a new campground!'
 		);
 		res.redirect(`/data`);
+	} else if (user.images.length >= 5) {
+		cloudinary.uploader.destroy(filename);
+		req.flash('error', 'You have reached your limit on images, sorry.');
+		res.redirect('/data');
 	} else {
 		user.images.push({ filename, path });
 		user.save();
