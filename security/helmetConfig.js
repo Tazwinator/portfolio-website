@@ -48,6 +48,7 @@ module.exports.CSPConfig = {
 			`https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/`, //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
 			'https://images.unsplash.com/'
 		],
-		fontSrc    : [ "'self'", ...fontSrcUrls ]
+		fontSrc    : [ "'self'", ...fontSrcUrls ],
+		frameSrc   : [ 'https://docs.google.com' ]
 	}
 };

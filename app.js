@@ -9,7 +9,7 @@ const path = require('path');
 const axios = require('axios');
 const mongoSanitize = require('express-mongo-sanitize');
 
-const helmet = require('helmet'); // needs setup, then add JOI and sanitize html
+const helmet = require('helmet');
 const { CSPConfig } = require('./security/helmetConfig');
 
 const methodOverride = require('method-override');
@@ -239,3 +239,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
 	console.log(`Serving on port ${port}`);
 });
+
+// mayeb add JOI validation schemas at some point
