@@ -3,9 +3,9 @@ body {
 	background-color: white;
 	background-attachment: local;
 	/* font-family: 'Caveat', cursive; ------- The handwriting esque font */
-	font-family: 'Orbitron', sans-serif;
+	font-family: 'Helvetica', sans-serif;
 	font-size: 1rem;
-	font-weight: 700;
+	font-weight: 600;
 	overflow-x: hidden;
 }
 

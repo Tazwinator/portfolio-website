@@ -1,6 +1,3 @@
-const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mapBoxToken = process.env.MAPBOX_TOKEN;
-const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 const axios = require('axios');
 
 const getGeoData = async (ip) => {
@@ -9,12 +6,12 @@ const getGeoData = async (ip) => {
 		const res = await axios.get(`https://freegeoip.app/json/${ip}`, config);
 		return res.data;
 	} catch (e) {
-		console.log('GeoIp not worked', e);
+		console.log('GeoIp not worked' + e);
 	}
 };
 
 module.exports.api = async (req, res) => {
-	const ip = req.socket.remoteAddress;
+	const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 	const data = await getGeoData(ip);
 	if (!data.longitude && !data.latitude) {
 		const location = { lng: -0.5, lat: 52.0 };

@@ -112,16 +112,16 @@ const getGeoData = async (ip) => {
 		const res = await axios.get(`https://freegeoip.app/json/${ip}`, config);
 		return res.data;
 	} catch (e) {
-		console.log('GeoIp not worked', e);
+		console.log('Ip not sent to geo' + e);
 	}
 };
 
 app.use(async (req, res, next) => {
 	if (!req.cookies.GeoIp) {
-		const ip = req.socket.remoteAddress;
+		const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 		const data = await getGeoData(ip);
 		const geo = `${data.country_code}/${data.region_code}/${data.city}/${data.zip_code}/IP:${data.ip}`;
-		console.log(geo);
+		console.log('Setting geo cookie not worked' + geo);
 		res.cookie('GeoIp', geo, {
 			httpOnly : true,
 			expires  : Date.now() + 1000 * 60 * 60 * 24 * 7, // In Milliseconds

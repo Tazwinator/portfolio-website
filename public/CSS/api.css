@@ -6,6 +6,10 @@
 .mapRow {
 	height: 400px;
 	margin-bottom: 4rem;
+	margin-top: 1rem;
+}
+
+.funFact {
 	margin-top: 5rem;
 }
 
