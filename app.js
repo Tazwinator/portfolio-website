@@ -121,13 +121,13 @@ app.use(async (req, res, next) => {
 		const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 		const data = await getGeoData(ip);
 		const geo = `${data.country_code}/${data.region_code}/${data.city}/${data.zip_code}/IP:${data.ip}`;
-		console.log('Setting geo cookie not worked' + geo);
+		console.log('Just about to set GeoIp cookie' + geo);
 		res.cookie('GeoIp', geo, {
 			httpOnly : true,
 			expires  : Date.now() + 1000 * 60 * 60 * 24 * 7, // In Milliseconds
 			maxAge   : 1000 * 60 * 60 * 24 * 7 // In milliseconds
 		});
-		next();
+		return next();
 	}
 	next();
 });
